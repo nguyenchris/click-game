@@ -4,17 +4,36 @@ import { Typography } from '@material-ui/core';
 
 class NavStatus extends Component {
   state = {
-    message: '',
-    inProgress: false
+    message: 'Click Start to Play!',
+    gameStarted: false
   };
 
+  componentDidUpdate({ gameStarted, score, topScore }, prevState) {
+    let message = '';
+    if (!gameStarted) return;
+
+    if (gameStarted && score === 0 && topScore > 0) {
+      message = 'Incorrect Answer!';
+    } else {
+      message = 'Correct Answer!';
+    }
+
+    if (score !== this.props.score || this.state.message !== message) {
+      this.setState({
+        message: message
+      });
+    }
+  }
+
   render() {
-    console.log(this.props);
-    return (
-      <div>
-        <div />
-      </div>
-    );
+    const { gameStarted, score, topScore } = this.props;
+    let message = this.state.message;
+    if (!gameStarted && score < topScore) {
+      message = "Glad you're back!";
+    } else if (gameStarted && score === 0 && topScore == 0) {
+      message = '';
+    }
+    return <div>{message}</div>;
   }
 }
 

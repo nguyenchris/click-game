@@ -38,7 +38,7 @@ class Game extends Component {
     }
     this.setState({
       teams: this.shuffleArr(this.state.teams),
-      topScore: localTopScore
+      topScore: parseInt(localTopScore)
     });
   }
 
@@ -72,6 +72,7 @@ class Game extends Component {
     if (this.state.gameStart) {
       newTeamsArr = this.resetData(teamsArr);
     }
+    console.log(newTeamsArr);
     this.setState({
       gameStart: true,
       teams: newTeamsArr,
@@ -103,10 +104,13 @@ class Game extends Component {
   render() {
     const { classes } = this.props;
     const isStarted = this.state.gameStart;
-
     return (
       <div>
-        <Navigation score={this.state.score} topScore={this.state.topScore} />
+        <Navigation
+          score={this.state.score}
+          topScore={this.state.topScore}
+          gameStarted={isStarted}
+        />
         <Header gameStarted={isStarted} clicked={this.startGameHandler} />
         <div className={`${classes.layout} ${classes.cardGrid} gameContainer`}>
           <Grid container spacing={40}>
