@@ -17,11 +17,11 @@ const styles = theme => ({
 });
 
 const GameItem = props => {
-  const { classes } = props;
+  const { classes, key, image } = props;
   return (
-    <Grid item key={1} sm={6} md={4} lg={3}>
+    <Grid item key={key} sm={6} md={4} lg={3}>
       <Card className={`${classes.card} gameImage`}>
-        <CardMedia className={classes.cardMedia} image="/assets/img/ATL.svg" />
+        <CardMedia className={classes.cardMedia} image={image} />
       </Card>
     </Grid>
   );

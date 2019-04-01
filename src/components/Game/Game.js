@@ -4,6 +4,7 @@ import Header from '../Header/Header';
 import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import GameItem from '../GameItem/GameItem';
+import data from '../../data.json';
 
 const styles = theme => ({
   layout: {
@@ -22,6 +23,18 @@ const styles = theme => ({
 });
 
 class Game extends Component {
+  state = {
+    teams: data
+  };
+
+  componentDidMount() {
+    this.setState({ teams: this.shuffleArr(this.state.teams) });
+  }
+
+  shuffleArr = arr => {
+    return arr.sort(() => Math.random() - 0.5);
+  };
+
   render() {
     const { classes } = this.props;
 
@@ -31,11 +44,9 @@ class Game extends Component {
         <Header />
         <div className={`${classes.layout} ${classes.cardGrid} gameContainer`}>
           <Grid container spacing={40}>
-            <GameItem />
-            <GameItem />
-            <GameItem />
-            <GameItem />
-            <GameItem />
+            {this.state.teams.map(team => {
+              return <GameItem key={team.id} id={team.id} image={team.image} />;
+            })}
           </Grid>
         </div>
       </div>
