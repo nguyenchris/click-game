@@ -5,7 +5,6 @@ import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import GameItem from '../GameItem/GameItem';
 import data from '../../data.json';
-import { ninvoke } from 'q';
 
 const styles = theme => ({
   layout: {
@@ -72,7 +71,6 @@ class Game extends Component {
     if (this.state.gameStart) {
       newTeamsArr = this.resetData(teamsArr);
     }
-    console.log(newTeamsArr);
     this.setState({
       gameStart: true,
       teams: newTeamsArr,

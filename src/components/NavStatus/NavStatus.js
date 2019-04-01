@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core';
 
 class NavStatus extends Component {
   state = {
@@ -30,7 +28,7 @@ class NavStatus extends Component {
     let message = this.state.message;
     if (!gameStarted && score < topScore) {
       message = "Glad you're back!";
-    } else if (gameStarted && score === 0 && topScore == 0) {
+    } else if (gameStarted && score === 0 && topScore === 0) {
       message = '';
     }
     return <div>{message}</div>;
