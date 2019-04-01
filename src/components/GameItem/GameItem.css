@@ -1,20 +1,11 @@
-.gameImage div {
-  transition: ease-in-out 0.08s;
+.gameImage {
+  transition: transform ease-in-out 0.1s;
+  transition: box-shadow 0.1s;
 }
 
-.gameImage div:hover {
-  transform: scale(1.1);
+.gameImage:hover {
+  transform: scale(1.05);
   cursor: pointer;
-}
-
-.gameImage::after {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  border-radius: 5px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  transition: opacity 0.8s ease-in-out;
+  box-shadow: 4px 4px 20px rgba(33, 33, 33, 0.2),
+    0 10px 10px rgba(0, 0, 0, 0.22);
 }

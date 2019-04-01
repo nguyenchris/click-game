@@ -2,14 +2,12 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import { withStyles } from '@material-ui/core/styles';
+import './Footer.css';
 
 const styles = theme => ({
   footer: {
     backgroundColor: theme.palette.primary.main,
     padding: theme.spacing.unit * 1.5,
-    position: 'fixed',
-    left: 0,
-    bottom: 0,
     width: '100%'
   }
 });
@@ -17,7 +15,7 @@ const styles = theme => ({
 const Footer = props => {
   const { classes } = props;
   return (
-    <footer className={classes.footer}>
+    <footer className={`${classes.footer} footerContainer`}>
       <Typography variant="h6" align="center" gutterBottom>
         NBA Click Memory Game
       </Typography>

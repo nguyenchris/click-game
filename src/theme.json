@@ -28,7 +28,7 @@
     },
     "text": {
       "primary": "#FFFFFF",
-      "secondary": "rgba(0, 0, 0, 0.54)",
+      "secondary": "#FFFFFF",
       "disabled": "rgba(0, 0, 0, 0.38)",
       "hint": "rgba(0, 0, 0, 0.38)"
     }

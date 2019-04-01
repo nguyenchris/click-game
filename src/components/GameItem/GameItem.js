@@ -19,8 +19,8 @@ const styles = theme => ({
 const GameItem = props => {
   const { classes } = props;
   return (
-    <Grid item key={1} sm={6} md={4} lg={3} className="gameImage">
-      <Card className={classes.card}>
+    <Grid item key={1} sm={6} md={4} lg={3}>
+      <Card className={`${classes.card} gameImage`}>
         <CardMedia className={classes.cardMedia} image="/assets/img/ATL.svg" />
       </Card>
     </Grid>
