@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "image": "/assets/img/aTL.svg",
+    "image": "./assets/img/aTL.svg",
     "clicked": false
   },
   {

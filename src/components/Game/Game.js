@@ -5,6 +5,10 @@ import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import GameItem from '../GameItem/GameItem';
 import data from '../../data.json';
+const reqSvgs = require.context('../assets/img', true, /\.svg$/);
+
+const svgs = reqSvgs.keys().map(path => ({ path, file: path }));
+console.log(svgs);
 
 const styles = theme => ({
   layout: {
@@ -112,6 +116,7 @@ class Game extends Component {
         <Header gameStarted={isStarted} clicked={this.startGameHandler} />
         <div className={`${classes.layout} ${classes.cardGrid} gameContainer`}>
           <Grid container spacing={40}>
+            <GameItem image={svgs[0].path} />
             {isStarted
               ? this.state.teams.map(team => {
                   return (
