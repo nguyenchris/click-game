@@ -11,7 +11,7 @@ const styles = theme => ({
     backgroundSize: 'cover'
   },
   heroContent: {
-    maxWidth: 600,
+    maxWidth: 900,
     margin: '0 auto',
     padding: `${theme.spacing.unit * 8}px 0 ${theme.spacing.unit * 6}px`
   }

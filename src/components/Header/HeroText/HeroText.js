@@ -27,7 +27,7 @@ const HeroText = props => {
         NBA CLICK GAME
       </Typography>
       <Typography variant="h6" align="center" paragraph>
-        CLICK ON AN IMAGE TO EARN POINTS, BUT DON'T CLICK ANY MORE THAN ONCE
+        CLICK ON A TEAM LOGO TO EARN POINTS, BUT DON'T CLICK ANY MORE THAN ONCE
       </Typography>
     </div>
   );

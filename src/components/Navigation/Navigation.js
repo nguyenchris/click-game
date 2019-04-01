@@ -3,10 +3,11 @@ import { withStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Typography } from '@material-ui/core';
 import Link from '@material-ui/core/Link';
 import NavStatus from '../NavStatus/NavStatus';
+import './navigation.css';
 
 const styles = theme => ({
   appBar: {
-    padding: theme.spacing.unit * 2
+    padding: theme.spacing.unit * 1.1
   },
   navItems: {
     width: '33.3%',

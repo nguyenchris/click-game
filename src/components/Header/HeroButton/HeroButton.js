@@ -16,12 +16,7 @@ const HeroButton = props => {
       <Grid container spacing={16} justify="center">
         <Grid item>
           <Button variant="contained" color="primary">
-            Main call to action
-          </Button>
-        </Grid>
-        <Grid item>
-          <Button variant="outlined" color="primary">
-            Secondary action
+            Start Game
           </Button>
         </Grid>
       </Grid>
