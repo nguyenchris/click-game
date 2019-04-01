@@ -26,11 +26,18 @@ class Game extends Component {
   state = {
     teams: data,
     score: 0,
-    topScore: 0
+    topScore: null
   };
 
   componentDidMount() {
-    this.setState({ teams: this.shuffleArr(this.state.teams) });
+    let localTopScore = localStorage.getItem('topScore');
+    if (!localTopScore) {
+      localTopScore = 0;
+    }
+    this.setState({
+      teams: this.shuffleArr(this.state.teams),
+      topScore: localTopScore
+    });
   }
 
   shuffleArr = arr => {
@@ -41,6 +48,7 @@ class Game extends Component {
     const { score, topScore } = this.state;
     const newScore = score + 1;
     const newTopScore = Math.max(newScore, topScore);
+    localStorage.setItem('topScore', newTopScore);
     this.setState({
       teams: this.shuffleArr(teamsArr),
       score: newScore,
