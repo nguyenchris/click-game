@@ -19,7 +19,7 @@ const styles = theme => ({
 });
 
 const Navigation = props => {
-  const { classes } = props;
+  const { classes, score, topScore } = props;
   return (
     <AppBar position="sticky" className={classes.appBar}>
       <Toolbar>
@@ -32,7 +32,7 @@ const Navigation = props => {
           <NavStatus />
         </Typography>
         <Typography variant="h4" className={classes.navItems}>
-          Score:
+          Score: {score} | Top Score: {topScore}
         </Typography>
       </Toolbar>
     </AppBar>

@@ -24,7 +24,9 @@ const styles = theme => ({
 
 class Game extends Component {
   state = {
-    teams: data
+    teams: data,
+    score: 0,
+    topScore: 0
   };
 
   componentDidMount() {
@@ -35,17 +37,64 @@ class Game extends Component {
     return arr.sort(() => Math.random() - 0.5);
   };
 
+  handleCorrectClick = teamsArr => {
+    const { score, topScore } = this.state;
+    const newScore = score + 1;
+    const newTopScore = Math.max(newScore, topScore);
+    this.setState({
+      teams: this.shuffleArr(teamsArr),
+      score: newScore,
+      topScore: newTopScore
+    });
+  };
+
+  handleIncorrectClick = arr => {
+    const newTeamsArr = this.resetData(arr);
+    this.setState({
+      teams: newTeamsArr,
+      score: 0
+    });
+  };
+
+  resetData = arr => {
+    const newTeamsArr = arr.map(team => {
+      return { ...team, clicked: false };
+    });
+    return this.shuffleArr(newTeamsArr);
+  };
+
+  teamClickHandler = id => {
+    const clickedTeamIndex = this.state.teams.findIndex(team => {
+      return team.id === id;
+    });
+    const clickedTeam = { ...this.state.teams[clickedTeamIndex] };
+    const newTeams = [...this.state.teams];
+    if (clickedTeam.clicked) {
+      return this.handleIncorrectClick(newTeams);
+    }
+    clickedTeam.clicked = true;
+    newTeams[clickedTeamIndex] = clickedTeam;
+    this.handleCorrectClick(newTeams);
+  };
+
   render() {
     const { classes } = this.props;
 
     return (
       <div>
-        <Navigation />
+        <Navigation score={this.state.score} topScore={this.state.topScore} />
         <Header />
         <div className={`${classes.layout} ${classes.cardGrid} gameContainer`}>
           <Grid container spacing={40}>
             {this.state.teams.map(team => {
-              return <GameItem key={team.id} id={team.id} image={team.image} />;
+              return (
+                <GameItem
+                  key={team.id}
+                  id={team.id}
+                  image={team.image}
+                  handleClick={this.teamClickHandler}
+                />
+              );
             })}
           </Grid>
         </div>

@@ -9,10 +9,10 @@ class NavStatus extends Component {
   };
 
   render() {
-    console.log(this.props.classes);
+    console.log(this.props);
     return (
       <div>
-        <div>Welcome</div>
+        <div />
       </div>
     );
   }

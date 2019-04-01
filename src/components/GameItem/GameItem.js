@@ -17,10 +17,13 @@ const styles = theme => ({
 });
 
 const GameItem = props => {
-  const { classes, key, image } = props;
+  const { classes, key, image, handleClick, id } = props;
   return (
     <Grid item key={key} sm={6} md={4} lg={3}>
-      <Card className={`${classes.card} gameImage`}>
+      <Card
+        className={`${classes.card} gameImage`}
+        onClick={() => handleClick(id)}
+      >
         <CardMedia className={classes.cardMedia} image={image} />
       </Card>
     </Grid>

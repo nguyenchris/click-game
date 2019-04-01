@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Album from './components/Album';
 import Layout from './components/Layout/Layout';
 import Game from './components/Game/Game';
 
