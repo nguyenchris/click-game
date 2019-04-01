@@ -5,6 +5,7 @@ import { Grid } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import GameItem from '../GameItem/GameItem';
 import data from '../../data.json';
+import { ninvoke } from 'q';
 
 const styles = theme => ({
   layout: {
@@ -26,7 +27,8 @@ class Game extends Component {
   state = {
     teams: data,
     score: 0,
-    topScore: null
+    topScore: null,
+    gameStart: false
   };
 
   componentDidMount() {
@@ -44,7 +46,7 @@ class Game extends Component {
     return arr.sort(() => Math.random() - 0.5);
   };
 
-  handleCorrectClick = teamsArr => {
+  correctClickHandler = teamsArr => {
     const { score, topScore } = this.state;
     const newScore = score + 1;
     const newTopScore = Math.max(newScore, topScore);
@@ -56,9 +58,22 @@ class Game extends Component {
     });
   };
 
-  handleIncorrectClick = arr => {
+  incorrectClickHandler = arr => {
     const newTeamsArr = this.resetData(arr);
     this.setState({
+      teams: newTeamsArr,
+      score: 0
+    });
+  };
+
+  startGameHandler = () => {
+    const teamsArr = [...this.state.teams];
+    let newTeamsArr = teamsArr;
+    if (this.state.gameStart) {
+      newTeamsArr = this.resetData(teamsArr);
+    }
+    this.setState({
+      gameStart: true,
       teams: newTeamsArr,
       score: 0
     });
@@ -78,32 +93,35 @@ class Game extends Component {
     const clickedTeam = { ...this.state.teams[clickedTeamIndex] };
     const newTeams = [...this.state.teams];
     if (clickedTeam.clicked) {
-      return this.handleIncorrectClick(newTeams);
+      return this.incorrectClickHandler(newTeams);
     }
     clickedTeam.clicked = true;
     newTeams[clickedTeamIndex] = clickedTeam;
-    this.handleCorrectClick(newTeams);
+    this.correctClickHandler(newTeams);
   };
 
   render() {
     const { classes } = this.props;
+    const isStarted = this.state.gameStart;
 
     return (
       <div>
         <Navigation score={this.state.score} topScore={this.state.topScore} />
-        <Header />
+        <Header gameStarted={isStarted} clicked={this.startGameHandler} />
         <div className={`${classes.layout} ${classes.cardGrid} gameContainer`}>
           <Grid container spacing={40}>
-            {this.state.teams.map(team => {
-              return (
-                <GameItem
-                  key={team.id}
-                  id={team.id}
-                  image={team.image}
-                  handleClick={this.teamClickHandler}
-                />
-              );
-            })}
+            {isStarted
+              ? this.state.teams.map(team => {
+                  return (
+                    <GameItem
+                      key={team.id}
+                      id={team.id}
+                      image={team.image}
+                      handleClick={this.teamClickHandler}
+                    />
+                  );
+                })
+              : null}
           </Grid>
         </div>
       </div>

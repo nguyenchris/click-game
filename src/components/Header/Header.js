@@ -18,13 +18,13 @@ const styles = theme => ({
 });
 
 const Header = props => {
-  const { classes } = props;
+  const { classes, gameStarted } = props;
 
   return (
     <div className={classes.heroUnit}>
       <div className={classes.heroContent}>
         <HeroText />
-        <HeroButton />
+        <HeroButton clicked={props.clicked} gameStarted={gameStarted} />
       </div>
     </div>
   );

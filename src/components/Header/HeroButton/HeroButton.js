@@ -10,13 +10,13 @@ const styles = theme => ({
 });
 
 const HeroButton = props => {
-  const { classes } = props;
+  const { classes, gameStarted } = props;
   return (
     <div className={classes.heroButtons}>
       <Grid container spacing={16} justify="center">
         <Grid item>
-          <Button variant="contained" color="primary">
-            Start Game
+          <Button onClick={props.clicked} variant="contained" color="primary">
+            {gameStarted ? 'Restart Game' : 'Start Game'}
           </Button>
         </Grid>
       </Grid>
