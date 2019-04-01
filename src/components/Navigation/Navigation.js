@@ -1,18 +1,41 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { AppBar } from '@material-ui/core';
+import { AppBar, Toolbar, Typography } from '@material-ui/core';
+import Link from '@material-ui/core/Link';
+import NavStatus from '../NavStatus/NavStatus';
 
-// const styles = theme
-
-class Navigation extends Component {
-  state = {
-    message: '',
-    inProgress: false
-  };
-
-  render() {
-    return <AppBar position="sticky">hi</AppBar>;
+const styles = theme => ({
+  appBar: {
+    padding: theme.spacing.unit * 2
+  },
+  navItems: {
+    width: '33.3%',
+    textAlign: 'center',
+    display: 'inline-block',
+    fontWeight: '500',
+    color: 'white'
   }
-}
+});
 
-export default Navigation;
+const Navigation = props => {
+  const { classes } = props;
+  return (
+    <AppBar position="sticky" className={classes.appBar}>
+      <Toolbar>
+        <Typography variant="h4" className={classes.navItems}>
+          <Link color="inherit" href="/" className="link">
+            NBA Click Game
+          </Link>
+        </Typography>
+        <Typography variant="h4" className={classes.navItems}>
+          <NavStatus />
+        </Typography>
+        <Typography variant="h4" className={classes.navItems}>
+          Score:
+        </Typography>
+      </Toolbar>
+    </AppBar>
+  );
+};
+
+export default withStyles(styles)(Navigation);
