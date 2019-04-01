@@ -1,15 +1,11 @@
 import React from 'react';
 import { Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+// import bgImage from '../../assets/header.svg';
 
 const styles = theme => ({
-  heroUnit: {
-    backgroundColor: theme.palette.background.paper
-  },
-  heroContent: {
-    maxWidth: 600,
-    margin: '0 auto',
-    padding: `${theme.spacing.unit * 8}px 0 ${theme.spacing.unit * 6}px`
+  heroTitle: {
+    fontWeight: 500
   },
   heroButtons: {
     marginTop: theme.spacing.unit * 4
@@ -19,23 +15,20 @@ const styles = theme => ({
 const HeroText = props => {
   const { classes } = props;
   return (
-    <div className={classes.heroUnit}>
-      <div className={classes.heroContent}>
-        <Typography
-          component="h1"
-          variant="h2"
-          align="center"
-          color="textPrimary"
-          gutterBottom
-        >
-          Album layout
-        </Typography>
-        <Typography variant="h6" align="center" color="textSecondary" paragraph>
-          Something short and leading about the collection below—its contents,
-          the creator, etc. Make it short and sweet, but not too short so folks
-          don't simply skip over it entirely.
-        </Typography>
-      </div>
+    <div>
+      <Typography
+        component="h1"
+        variant="h2"
+        align="center"
+        color="textPrimary"
+        className={classes.heroTitle}
+        gutterBottom
+      >
+        NBA CLICK GAME
+      </Typography>
+      <Typography variant="h6" align="center" paragraph>
+        CLICK ON AN IMAGE TO EARN POINTS, BUT DON'T CLICK ANY MORE THAN ONCE
+      </Typography>
     </div>
   );
 };

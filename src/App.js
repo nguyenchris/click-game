@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import Album from './components/Album';
 import Layout from './components/Layout/Layout';
-import Navigation from './components/Navigation/Navigation';
+import Game from './components/Game/Game';
 
 class App extends Component {
   render() {
     return (
       <Layout>
-        <Navigation />
+        <Game />
       </Layout>
     );
   }

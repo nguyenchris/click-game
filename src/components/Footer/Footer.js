@@ -6,7 +6,11 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = theme => ({
   footer: {
     backgroundColor: theme.palette.primary.main,
-    padding: theme.spacing.unit * 6
+    padding: theme.spacing.unit * 5,
+    position: 'fixed',
+    left: 0,
+    bottom: 0,
+    width: '100%'
   }
 });
 
